@@ -1,0 +1,47 @@
+<div ng-switch="myVar" ng-show="myVar">
+  <span ng-switch-when="dogs">
+    <h1>Dogs</h1>
+    <p>Welcome to a world of dogs.</p>
+  </span>
+  <span ng-switch-when="tuts">
+    <h1>Tutorials</h1>
+    <p>Learn from examples.</p>
+  </span>
+  <span ng-switch-when="cars">
+    <h1>Cars</h1>
+    <p>Read about cars.</p>
+  </span>
+</div>
+
+<form>
+  Select a topic:
+  <select ng-model="myVarSelectbox">
+    <option value=""></option>
+    <option value="dogs">Dogs</option>
+    <option value="tuts">Tutorials</option>
+    <option value="cars">Cars</option>
+  </select>
+</form>
+
+<form ng-controller="formCtrl" novalidate>
+  First Name:<br />
+  <input type="text" ng-model="user.firstName" /><br />
+  Last Name:<br />
+  <input type="text" ng-model="user.lastName" />
+  <br /><br />
+  <button ng-click="reset()">RESET</button>
+
+  <p>form = {{user}}</p>
+  <p>master = {{master}}</p>
+</form>
+
+<form name="myFormValidate">
+  Input : <input name="myInputValidate" ng-model="myInputValidate" required />
+  <br /><br />
+  E-mail : <input name="myEmail" ng-model="myEmail" type="email" required />
+</form>
+<div>
+  <p>The input's valid state is:</p>
+  <p>Input : {{myFormValidate.myInputValidate.$valid}}</p>
+  <p>Email : {{myFormValidate.myEmail.$valid}}</p>
+</div>

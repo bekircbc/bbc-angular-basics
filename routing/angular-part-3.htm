@@ -1,0 +1,76 @@
+<div ng-controller="mouseOverCounterCtrl">
+  <h1 ng-mousemove="count = count + 1">Mouse Over Me!</h1>
+
+  <h2>{{ count }}</h2>
+</div>
+
+<div ng-controller="mouseClickCounterCtrl">
+  <!-- <button ng-click="count = count + 1">Click me!</button> -->
+
+  <button ng-click="myFunction()">Click me!</button>
+
+  <p>{{ count }}</p>
+</div>
+
+<div ng-controller="myToggleCtrl">
+  <button ng-click="myFunc()">Show Menu</button>
+
+  <div ng-show="showMe">
+    <h1>Menu:</h1>
+    <p>Pizza</p>
+    <p>Pasta</p>
+    <p>Pesce</p>
+  </div>
+</div>
+
+<div ng-controller="mouseCoordinateCtrl">
+  <h1 ng-mousemove="myFunc($event)">Mouse Over Me!</h1>
+
+  <p>Coordinates: {{x + ', ' + y}}</p>
+</div>
+
+<form name="myFormVal">
+  <p>
+    Name:
+    <input name="myName" ng-model="myName" required />
+    <span ng-show="myFormVal.myName.$touched && myFormVal.myName.$invalid"
+      >The name is required.</span
+    >
+  </p>
+
+  <p>
+    Address:
+    <input name="myAddress" ng-model="myAddress" required />
+  </p>
+</form>
+
+<form name="myFormDirective">
+  <input
+    name="myInputDirective"
+    ng-model="myInputDirective"
+    required
+    my-own-directive
+  />
+</form>
+
+<div ng-controller="myAngularScobeCtrl">
+  <p>{{ x1 }}</p>
+  <p>{{ x2 }}</p>
+  <p>{{ x3 }}</p>
+  <p>{{ x4 }}</p>
+  <p>{{ x5 }}</p>
+</div>
+
+<div ng-controller="hexafyCtrl">
+  <h1>This is our own service and controller</h1>
+
+  <p>Value : <input type="number" ng-model="convertNumber" /></p>
+
+  <p>
+    The hexadecimal value of {{convertNumber}} is: must be convertNumber senden
+  </p>
+
+  <p>The hexadecimal value of 255 is:</p>
+
+  <h1>{{hex}}</h1>
+</div>

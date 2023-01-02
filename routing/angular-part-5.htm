@@ -1,0 +1,82 @@
+<div w3-test-directive></div>
+<div ng-init="names=['Jani','Hege','Kai']">
+  <ul>
+    <li ng-repeat="x in names">{{ x }}</li>
+  </ul>
+</div>
+<div
+  ng-init="namesandcountry=[
+{name:'Jani',country:'Norway'},
+{name:'Hege',country:'Sweden'},
+{name:'Kai',country:'Denmark'}]"
+>
+  <ul>
+    <li ng-repeat="x in namesandcountry">{{ x.name + ', ' + x.country }}</li>
+  </ul>
+</div>
+<div ng-controller="namesCountryCtrl">
+  <ul>
+    <h2>List ordered by Country - ORDERBY</h2>
+    <li ng-repeat="x in namescountry  | orderBy:'country'">
+      {{ x.name + ', ' + x.country }}
+    </li>
+  </ul>
+</div>
+<form name="myFormEmail">
+  Email:
+  <input type="email" name="myAddress" ng-model="text" />
+  <span ng-show="myFormEmail.myAddress.$error.email"
+    >Not a valid e-mail address</span
+  >
+</form>
+<div my-initial-directive></div>
+<form name="myForm" ng-init="myText = 'post@myweb.com'">
+  Email:
+  <input type="email" name="myAddress" ng-model="myText" required />
+  <h1>Status</h1>
+  {{myForm.myAddress.$valid}} {{myForm.myAddress.$dirty}}
+  {{myForm.myAddress.$touched}}
+</form>
+<div my-initial-directive></div>
+<form name="myFormName">
+  Enter your name:
+  <input name="myName" ng-model="myText" required />
+</form>
+<div ng-controller="myCtrl">
+  Name: <input ng-model="firstname" />
+  <h1>{{firstname}}</h1>
+</div>
+
+<div ng-controller="carNameCtrl">
+  <h1>{{carname}}</h1>
+</div>
+
+<div>
+  <p>The rootScope's favorite color:</p>
+  <h1>{{color}}</h1>
+</div>
+<div ng-controller="colorCtrl">
+  <p>The scope of the controller's favorite color:</p>
+  <h1>{{color}}</h1>
+</div>
+<div>
+  <p>The rootScope's favorite color is still:</p>
+  <h1>{{color}}</h1>
+</div>
+<div ng-controller="namesCountryCtrl">
+  <ul>
+    <li ng-repeat="x in namescountry | filter : 'i'">{{ x.name }}</li>
+  </ul>
+</div>
+<div ng-controller="namesCountryCtrl">
+  <table border="2" width="60%">
+    <tr>
+      <th ng-click="orderByMe('name')">Name</th>
+      <th ng-click="orderByMe('country')">Country</th>
+    </tr>
+    <tr ng-repeat="x in names | orderBy:myOrderBy">
+      <td>{{x.name}}</td>
+      <td>{{x.country}}</td>
+    </tr>
+  </table>
+</div>

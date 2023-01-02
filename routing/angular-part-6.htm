@@ -1,0 +1,55 @@
+
+<div>
+  <ul ng-controller="namesCtrl">
+    <li ng-repeat="x in names">{{x | myFormat}}</li>
+  </ul>
+</div>
+<div ng-controller="locationCtrl">
+  <p>The url of this page is:</p>
+  <h3>{{myUrl}}</h3>
+</div>
+<div ng-controller="httpGetCtrl">
+  <p>Today's welcome message is:</p>
+
+  <h1>{{myWelcome}}</h1>
+</div>
+<div ng-controller="dataStatusCtrl">
+  <p>Data : {{content}}</p>
+  <p>Status : {{statuscode}}</p>
+  <p>StatusText : {{statustext}}</p>
+</div>
+<div ng-controller="timeoutCtrl">
+  <p>This header will change after two seconds:</p>
+
+  <h1>{{myHeader}}</h1>
+</div>
+<div ng-controller="customersDataCtrl">
+  <ul>
+    <h3>API : getting data from :</h3>
+    <a href="https://www.w3schools.com/angular/customers.php"
+      >API - Customers</a
+    >
+    <h3>Data from API :</h3>
+    <li ng-repeat="x in myData">{{ x.Name + ', ' + x.Country }}</li>
+  </ul>
+</div>
+<div ng-controller="customersDataCtrl">
+  <table>
+    <table border="2" width="60%">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Country</th>
+      </tr>
+    <tr ng-repeat="x in myData | orderBy:'Country'">
+      <td>{{ $index + 1 }}</td>
+      <td>{{ x.Name }}</td>
+      <td>{{ x.Country }}</td>
+      <!-- <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Name }}</td>
+      <td ng-if="$even">{{ x.Name }}</td>
+      <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Country }}</td>
+      <td ng-if="$even">{{ x.Country }}</td>            -->
+    </tr>
+  </table>
+</div>
+<div ng-include=""'myFile.htm'></div>

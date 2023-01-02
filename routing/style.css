@@ -1,0 +1,66 @@
+section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 2rem;
+}
+
+div,
+form {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  width: 20rem;
+  align-items: center;
+}
+
+input.ng-invalid {
+  background-color: pink;
+}
+input.ng-valid {
+  background-color: lightgreen;
+}
+
+form.ng-pristine {
+  background-color: lightblue;
+}
+form.ng-dirty {
+  background-color: pink;
+}
+
+table,
+th,
+td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+@keyframes myChange {
+  from {
+    height: 100px;
+  }
+  to {
+    height: 0;
+  }
+}
+
+.ani {
+  height: 100px;
+  background-color: lightblue;
+}
+
+.ani.ng-hide {
+  animation: 0.5s myChange;
+}

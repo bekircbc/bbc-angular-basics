@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+  </head>
+  <body>
+    <section ng-app="myApp">
+      <div ng-controller="intervalCtrl">
+        <p>The time is:</p>
+        <h1>{{theTime}}</h1>
+      </div>
+      <div ng-controller="namesCtrl">
+
+        <select>
+        <option ng-repeat="x in names">{{x}}</option>
+        
+        </div>
+        <div ng-init="mySwitch=true">
+
+          <p>
+          <button ng-disabled="mySwitch">Click Me!</button>
+          </p>
+          
+          <p>
+          <input type="checkbox" ng-model="mySwitch">Button
+          </p>
+          
+          <p>{{mySwitch ? "I am visible." : "False"}}</p>
+
+          <p ng-show=mySwitch>I am visible.</p>
+
+          <p ng-hide=!mySwitch>I am visible.</p>
+
+
+          
+          </div>
+
+          <div>
+            Hide the DIV: <input type="checkbox" ng-model="myCheckAni">
+
+<div ng-hide="myCheckAni"></div>
+          </div>
+
+          <div ng-init="hour=13">
+
+            <p ng-show="hour > 12">I am visible.</p>
+            
+            </div>
+
+            <div>
+        
+                Check to show a header:
+                <input type="checkbox" ng-model="myVarHeader">
+            
+              <h1 ng-show="myVarHeader">My Header</h1>
+            </div>
+
+            <form >
+              Pick a topic:
+              <input type="radio" ng-model="myVar" value="dogs">Dogs
+              <input type="radio" ng-model="myVar" value="tuts">Tutorials
+              <input type="radio" ng-model="myVar" value="cars">Cars
+            </form>
+            
+            <div ng-switch="myVar" ng-show="myVar">
+              <span ng-switch-when="dogs">
+                 <h1>Dogs</h1>
+                 <p>Welcome to a world of dogs.</p>
+              </span>
+              <span ng-switch-when="tuts">
+                 <h1>Tutorials</h1>
+                 <p>Learn from examples.</p>
+              </span>
+              <span ng-switch-when="cars">
+                 <h1>Cars</h1>
+                 <p>Read about cars.</p>
+              </span>
+            </div>
+
+            <form>
+              Select a topic:
+              <select ng-model="myVarSelectbox">
+                <option value="">
+                <option value="dogs">Dogs
+                <option value="tuts">Tutorials
+                <option value="cars">Cars
+              </select>
+            </form>
+
+          
+              <form ng-controller="formCtrl" novalidate>
+                First Name:<br>
+                <input type="text" ng-model="user.firstName"><br>
+                Last Name:<br>
+                <input type="text" ng-model="user.lastName">
+                <br><br>
+                <button ng-click="reset()">RESET</button>
+    
+              <p>form = {{user}}</p>
+              <p>master = {{master}}</p>
+            </form>
+
+            <form name="myFormValidate">
+              Input : <input name="myInputValidate" ng-model="myInputValidate" required> <br/><br/>
+              E-mail :   <input name="myEmail" ng-model="myEmail" type="email" required>
+
+              
+
+            </form>
+            <div>
+              <p>The input's valid state is: </p>
+              <p>Input : {{myFormValidate.myInputValidate.$valid}}</p>
+              <p>Email : {{myFormValidate.myEmail.$valid}}</p>
+            </div>
+
+            <div ng-controller="mouseOverCounterCtrl">
+
+              <h1 ng-mousemove="count = count + 1">Mouse Over Me!</h1>
+              
+              <h2>{{ count }}</h2>
+              
+              </div>
+
+              <div ng-controller="mouseClickCounterCtrl">
+
+                <!-- <button ng-click="count = count + 1">Click me!</button> -->
+
+                <button ng-click="myFunction()">Click me!</button>
+                
+                <p>{{ count }}</p>
+                
+                </div>
+
+                <div ng-controller="myToggleCtrl">
+
+                  <button ng-click="myFunc()">Show Menu</button>
+                  
+                  <div ng-show="showMe">
+                    <h1>Menu:</h1>
+                    <p>Pizza</p>
+                    <p>Pasta</p>
+                    <p>Pesce</p>
+                  </div>
+                  
+                  </div>
+
+                  <div ng-controller="mouseCoordinateCtrl">
+
+                    <h1 ng-mousemove="myFunc($event)">Mouse Over Me!</h1>
+                    
+                    <p>Coordinates: {{x + ', ' + y}}</p>
+                    
+                    </div>  
+
+                    <form name="myFormVal">
+                      <p>Name:
+                      <input name="myName" ng-model="myName" required>
+                      <span ng-show="myFormVal.myName.$touched && myFormVal.myName.$invalid">The name is required.</span>
+                      </p>
+                      
+                      <p>Address:
+                      <input name="myAddress" ng-model="myAddress" required>
+                      </p>
+                      
+                      </form>
+
+                      <form name="myFormDirective">
+                        <input name="myInputDirective" ng-model="myInputDirective" required my-own-directive>
+                        </form>
+
+                        <div ng-controller="myAngularScobeCtrl">
+                          <p>{{ x1 }}</p>
+                          <p>{{ x2 }}</p>
+                          <p>{{ x3 }}</p>
+                          <p>{{ x4 }}</p>
+                          <p>{{ x5 }}</p>
+                        </div>
+
+      <div ng-controller="hexafyCtrl">
+        <h1>This is our own service and controller</h1>
+
+        <p>Value : <input type="number" ng-model="convertNumber" /></p>
+
+        <p>
+          The hexadecimal value of {{convertNumber}} is: must be convertNumber
+          senden
+        </p>
+
+        <p>The hexadecimal value of 255 is:</p>
+
+        <h1>{{hex}}</h1>
+      </div>
+      <div ng-controller="carsModellCtrl">
+
+        <p>Select a car:</p>
+        
+        <select ng-model="selectedCar1">
+        <option ng-repeat="x in cars" ng-value="{{x}}">{{x.model}}</option>
+        </select>
+        
+        <h1>You selected a {{selectedCar1.color}} {{selectedCar1.model}}</h1>
+
+        
+        </div>
+        <div ng-controller="carsModellCtrl">
+
+          <p>Select a car:</p>
+          
+          <select ng-model="selectedCar2" 
+            ng-options="x.model for x in cars">
+          </select>
+          
+          <h1>You selected: {{selectedCar2.model}}</h1>
+          <p>Its color is: {{selectedCar2.color}}</p>
+  
+          
+          </div>
+      <div>
+        <p>Input something in the input box:</p>
+        <p>Name: <input type="text" ng-model="name" /></p>
+        <h2 ng-bind="name"></h2>
+        <h3>{{name}}</h3>
+      </div>
+      <div ng-init="firstName='John'">
+        <p>
+          The name is <span ng-bind="firstName | lowercase"></span> LOWERCASE
+        </p>
+      </div>
+      <div>
+        <p>My first expression: {{ 5 + 5 }}</p>
+      </div>
+      <div ng-init="myCol='lightblue'">
+        <input style="background-color:blue" ng-model="myCol" />
+      </div>
+      <div ng-init="quantity=3;cost=5">
+        <h2>Price: {{ cost | currency }} CURRENCY</h2>
+        <p>Total in dollar: {{ quantity * cost }}</p>
+      </div>
+
+      <div ng-init="person={firstName:'John',lastName:'Doe'}">
+        <p>The lastname is {{ person.lastName | uppercase}} UPPERCASE</p>
+      </div>
+
+      <div ng-init="points=[1,15,19,2,40]">
+        <p>The third result is {{ points[2] }}</p>
+      </div>
+
+      <div ng-controller="myCtrl">
+        First Name: <input type="text" ng-model="firstName" /><br />
+        Last Name: <input type="text" ng-model="lastName" /><br />
+        <br />
+        Full Name: {{firstName + " " + lastName}}
+      </div>
+
+      <div ng-controller="personCtrl">
+        First Name: <input type="text" ng-model="firstName" /><br />
+        Last Name: <input type="text" ng-model="lastName" /><br />
+        <br />
+        <h1 ng-click="changeName()">{{fullName()}}</h1>
+      </div>
+
+      <div w3-test-directive></div>
+      <div ng-init="names=['Jani','Hege','Kai']">
+        <ul>
+          <li ng-repeat="x in names">{{ x }}</li>
+        </ul>
+      </div>
+      <div
+        ng-init="namesandcountry=[
+{name:'Jani',country:'Norway'},
+{name:'Hege',country:'Sweden'},
+{name:'Kai',country:'Denmark'}]"
+      >
+        <ul>
+          <li ng-repeat="x in namesandcountry">
+            {{ x.name + ', ' + x.country }}
+          </li>
+        </ul>
+      </div>
+      <div ng-controller="namesCountryCtrl">
+        <ul>
+          <h2>List ordered by Country - ORDERBY</h2>
+          <li ng-repeat="x in namescountry  | orderBy:'country'">
+            {{ x.name + ', ' + x.country }}
+          </li>
+        </ul>
+      </div>
+      <form name="myFormEmail">
+        Email:
+        <input type="email" name="myAddress" ng-model="text" />
+        <span ng-show="myFormEmail.myAddress.$error.email"
+          >Not a valid e-mail address</span
+        >
+      </form>
+      <div my-initial-directive></div>
+      <form name="myForm" ng-init="myText = 'post@myweb.com'">
+        Email:
+        <input type="email" name="myAddress" ng-model="myText" required />
+        <h1>Status</h1>
+        {{myForm.myAddress.$valid}} {{myForm.myAddress.$dirty}}
+        {{myForm.myAddress.$touched}}
+      </form>
+      <div my-initial-directive></div>
+      <form name="myFormName">
+        Enter your name:
+        <input name="myName" ng-model="myText" required />
+      </form>
+      <div ng-controller="myCtrl">
+        Name: <input ng-model="firstname" />
+        <h1>{{firstname}}</h1>
+      </div>
+    
+      <div ng-controller="carNameCtrl">
+        <h1>{{carname}}</h1>
+      </div>
+  
+      <div>
+        <p>The rootScope's favorite color:</p>
+        <h1>{{color}}</h1>
+      </div>
+      <div ng-controller="colorCtrl">
+        <p>The scope of the controller's favorite color:</p>
+        <h1>{{color}}</h1>
+      </div>
+      <div>
+        <p>The rootScope's favorite color is still:</p>
+        <h1>{{color}}</h1>
+      </div>
+      <div ng-controller="namesCountryCtrl">
+        <ul>
+          <li ng-repeat="x in namescountry | filter : 'i'">{{ x.name }}</li>
+        </ul>
+      </div>
+      <div ng-controller="namesCountryCtrl">
+        <table border="2" width="60%">
+          <tr>
+            <th ng-click="orderByMe('name')">Name</th>
+            <th ng-click="orderByMe('country')">Country</th>
+          </tr>
+          <tr ng-repeat="x in names | orderBy:myOrderBy">
+            <td>{{x.name}}</td>
+            <td>{{x.country}}</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <ul ng-controller="namesCtrl">
+          <li ng-repeat="x in names">{{x | myFormat}}</li>
+        </ul>
+      </div>
+      <div ng-controller="locationCtrl">
+        <p>The url of this page is:</p>
+        <h3>{{myUrl}}</h3>
+      </div>
+      <div ng-controller="httpGetCtrl">
+        <p>Today's welcome message is:</p>
+
+        <h1>{{myWelcome}}</h1>
+      </div>
+      <div ng-controller="dataStatusCtrl">
+        <p>Data : {{content}}</p>
+        <p>Status : {{statuscode}}</p>
+        <p>StatusText : {{statustext}}</p>
+      </div>
+      <div ng-controller="timeoutCtrl">
+        <p>This header will change after two seconds:</p>
+
+        <h1>{{myHeader}}</h1>
+      </div>
+      <div ng-controller="customersDataCtrl">
+        <ul>
+          <h3>API : getting data from :</h3>
+          <a href="https://www.w3schools.com/angular/customers.php"
+            >API - Customers</a
+          >
+          <h3>Data from API :</h3>
+          <li ng-repeat="x in myData">{{ x.Name + ', ' + x.Country }}</li>
+        </ul>
+      </div>
+      <div ng-controller="customersDataCtrl">
+        <table>
+          <table border="2" width="60%">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Country</th>
+            </tr>
+          <tr ng-repeat="x in myData | orderBy:'Country'">
+            <td>{{ $index + 1 }}</td>
+            <td>{{ x.Name }}</td>
+            <td>{{ x.Country }}</td>
+            <!-- <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Name }}</td>
+            <td ng-if="$even">{{ x.Name }}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Country }}</td>
+            <td ng-if="$even">{{ x.Country }}</td>            -->
+          </tr>
+        </table>
+      </div>
+      <div ng-include=""'myFile.htm'></div>
+    </section>
+    <script src="myApp.js"></script>
+    <!-- <script src="myCtrl.js"></script> -->
+    <!-- <script src="personCtrl.js"></script> -->
+    <!-- <script src="namesCtrl.js"></script> -->
+    <!-- <script src="namesCountryCtrl.js"></script>
+    <script src="myDir.js"></script> -->
+    <!-- <script src="carNameCtrl.js"></script> -->
+    <!-- <script src="colorCtrl.js"></script> -->
+    <!-- <script src="myFormat.js"></script>
+    <script src="allCtrl.js"></script>
+    <script src="servicesCtrl.js"></script>
+    <script src="httpMethodsCtrl.js"></script> -->
+    <!-- carNameCtrl,colorCtrl and namesCtrl is in one controller -->
+  </body>
+</html>

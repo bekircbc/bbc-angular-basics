@@ -1,0 +1,58 @@
+<div ng-controller="carsModellCtrl">
+  <p>Select a car:</p>
+
+  <select ng-model="selectedCar1">
+    <option ng-repeat="x in cars" ng-value="{{x}}">{{x.model}}</option>
+  </select>
+
+  <h1>You selected a {{selectedCar1.color}} {{selectedCar1.model}}</h1>
+</div>
+<div ng-controller="carsModellCtrl">
+  <p>Select a car:</p>
+
+  <select ng-model="selectedCar2" ng-options="x.model for x in cars"></select>
+
+  <h1>You selected: {{selectedCar2.model}}</h1>
+  <p>Its color is: {{selectedCar2.color}}</p>
+</div>
+<div>
+  <p>Input something in the input box:</p>
+  <p>Name: <input type="text" ng-model="name" /></p>
+  <h2 ng-bind="name"></h2>
+  <h3>{{name}}</h3>
+</div>
+<div ng-init="firstName='John'">
+  <p>The name is <span ng-bind="firstName | lowercase"></span> LOWERCASE</p>
+</div>
+<div>
+  <p>My first expression: {{ 5 + 5 }}</p>
+</div>
+<div ng-init="myCol='lightblue'">
+  <input style="background-color:{{myCol}}" ng-model="myCol" />
+</div>
+<div ng-init="quantity=3;cost=5">
+  <h2>Price: {{ cost | currency }} CURRENCY</h2>
+  <p>Total in dollar: {{ quantity * cost }}</p>
+</div>
+
+<div ng-init="person={firstName:'John',lastName:'Doe'}">
+  <p>The lastname is {{ person.lastName | uppercase}} UPPERCASE</p>
+</div>
+
+<div ng-init="points=[1,15,19,2,40]">
+  <p>The third result is {{ points[2] }}</p>
+</div>
+
+<div ng-controller="myCtrl">
+  First Name: <input type="text" ng-model="firstName" /><br />
+  Last Name: <input type="text" ng-model="lastName" /><br />
+  <br />
+  Full Name: {{firstName + " " + lastName}}
+</div>
+
+<div ng-controller="personCtrl">
+  First Name: <input type="text" ng-model="firstName" /><br />
+  Last Name: <input type="text" ng-model="lastName" /><br />
+  <br />
+  <h1 ng-click="changeName()">{{fullName()}}</h1>
+</div>
